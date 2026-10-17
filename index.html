@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CurAssist — многофункциональный помощник.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="auth-screen" class="auth-screen hidden">
+    <div class="auth-card">
+      <h1>CurAssist Project</h1>
+      <p id="auth-message" class="auth-sub">Введите пароль</p>
+
+      <div class="form-field">
+        <label for="auth-password">Пароль</label>
+        <input type="password" id="auth-password" autocomplete="current-password">
+      </div>
+      <div class="form-field hidden" id="auth-confirm-field">
+        <label for="auth-password-confirm">Подтверждение пароля</label>
+        <input type="password" id="auth-password-confirm" autocomplete="new-password">
+      </div>
+
+      <button id="auth-submit" class="primary">Войти</button>
+    </div>
+  </div>
+
+  <div id="app" class="app hidden">
+    <header class="app-header">
+      <div class="header-left">
+        <h1>CurAssist Project</h1>
+        <div class="date-range">
+          <span class="date-label">Дата отчёта:</span>
+          <input type="date" id="week-start">
+          <span class="dash">—</span>
+          <input type="date" id="week-end">
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="section-controls">
+          <button id="btn-expand-all" class="button-icon" title="Развернуть все">Развернуть</button>
+          <button id="btn-collapse-all" class="button-icon" title="Свернуть все">Свернуть</button>
+        </div>
+        <div class="progress">
+          <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+          <span id="progress-text">0 / 13</span>
+        </div>
+        <span id="save-indicator" class="save-indicator">✓ Сохранено</span>
+        <button id="btn-logout" class="button-icon" title="Выйти">Выйти</button>
+      </div>
+    </header>
+
+    <section class="checklist" id="checklist"></section>
+    <main class="sections" id="sections"></main>
+
+    <footer class="app-footer">
+      <button id="btn-preview" class="primary">Предпросмотр отчёта</button>
+      <button id="btn-copy" class="primary">Скопировать отчёт</button>
+      <button id="btn-reset" class="danger">Сбросить неделю</button>
+    </footer>
+  </div>
+
+  <div id="preview-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Предпросмотр отчёта</h2>
+        <button id="modal-close" class="button-icon">✕</button>
+      </div>
+      <pre id="preview-content"></pre>
+      <div class="modal-footer">
+        <span id="char-count">Символов: 0</span>
+        <div class="modal-footer-actions">
+          <button id="modal-copy" class="primary">Скопировать</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirm-modal" class="modal hidden">
+    <div class="modal-content modal-content-confirm">
+      <div class="modal-header">
+        <h2 id="confirm-title">Подтверждение</h2>
+      </div>
+      <div class="modal-body" id="confirm-message"></div>
+      <div class="modal-footer">
+        <button id="confirm-cancel" class="button-icon">Отмена</button>
+        <button id="confirm-ok" class="danger">Подтвердить</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/blocks.js"></script>
+  <script src="js/report.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
